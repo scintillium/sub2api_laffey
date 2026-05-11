@@ -24,7 +24,8 @@ services:
   # Sub2API Application
   # ===========================================================================
   sub2api:
-    image: ghcr.io/scintillium/sub2api_laffey:latest
+    image: sub2api_laffey:latest
+    pull_policy: never
     container_name: sub2api
     restart: unless-stopped
     ulimits:

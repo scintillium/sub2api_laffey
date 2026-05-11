@@ -19,8 +19,9 @@ FROM ${NODE_IMAGE} AS frontend-builder
 
 WORKDIR /app/frontend
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm. Pin v10 because pnpm v11 blocks dependency build scripts by
+# default, which breaks esbuild/vue-demi during Docker builds.
+RUN corepack enable && corepack prepare pnpm@10.25.0 --activate
 
 # Install dependencies first (better caching)
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
@@ -28,7 +29,7 @@ RUN pnpm install --frozen-lockfile
 
 # Copy frontend source and build
 COPY frontend/ ./
-RUN pnpm run build
+RUN NODE_OPTIONS="--max-old-space-size=2048" pnpm run build
 
 # -----------------------------------------------------------------------------
 # Stage 2: Backend Builder
