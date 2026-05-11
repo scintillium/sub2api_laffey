@@ -5,6 +5,32 @@
 import { config } from '@vue/test-utils'
 import { vi } from 'vitest'
 
+const testLocalStorage =
+  typeof window !== 'undefined' && window.localStorage
+    ? window.localStorage
+    : {
+        getItem: vi.fn(() => null),
+        setItem: vi.fn(),
+        removeItem: vi.fn(),
+        clear: vi.fn(),
+        key: vi.fn(() => null),
+        length: 0,
+      }
+
+if (typeof globalThis.localStorage === 'undefined') {
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    value: testLocalStorage,
+  })
+}
+
+if (typeof window !== 'undefined' && typeof window.localStorage === 'undefined') {
+  Object.defineProperty(window, 'localStorage', {
+    configurable: true,
+    value: testLocalStorage,
+  })
+}
+
 // Mock requestIdleCallback (Safari < 15 不支持)
 if (typeof globalThis.requestIdleCallback === 'undefined') {
   globalThis.requestIdleCallback = ((callback: IdleRequestCallback) => {

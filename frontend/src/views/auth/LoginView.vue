@@ -3,10 +3,10 @@
     <div class="space-y-6">
       <!-- Title -->
       <div class="text-center">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+        <h2 class="text-2xl font-semibold tracking-tight text-gray-950 dark:text-white">
           {{ t('auth.welcomeBack') }}
         </h2>
-        <p class="mt-2 text-sm text-gray-500 dark:text-dark-400">
+        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
           {{ t('auth.signInToAccount') }}
         </p>
       </div>
@@ -71,7 +71,7 @@
             <router-link
               v-if="passwordResetEnabled && !backendModeEnabled"
               to="/forgot-password"
-              class="text-sm font-medium text-primary-600 transition-colors hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
+              class="text-sm font-medium text-[#1f275d] transition-colors hover:text-[#9f4965] dark:text-[#f9dbe6] dark:hover:text-white"
             >
               {{ t('auth.forgotPassword') }}
             </router-link>
@@ -93,7 +93,7 @@
         <button
           type="submit"
           :disabled="authActionDisabled || (turnstileEnabled && !turnstileToken)"
-          class="btn btn-primary w-full"
+          class="inline-flex w-full items-center justify-center rounded-lg bg-[#111827] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#1f2937] focus:outline-none focus:ring-2 focus:ring-[#f9dbe6] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#f9dbe6] dark:text-[#111827] dark:hover:bg-white"
         >
           <svg
             v-if="isLoading"
@@ -173,7 +173,7 @@
         {{ t('auth.dontHaveAccount') }}
         <router-link
           to="/register"
-          class="font-medium text-primary-600 transition-colors hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
+        class="font-medium text-[#1f275d] transition-colors hover:text-[#9f4965] dark:text-[#f9dbe6] dark:hover:text-white"
         >
           {{ t('auth.signUp') }}
         </router-link>
