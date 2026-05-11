@@ -1,0 +1,38 @@
+$ vite "--host" "0.0.0.0" "--port" "3000"
+[vite] 无法获取公开配置，将回退到 API 调用: fetch failed
+[vite] 无法获取公开配置，将回退到 API 调用: fetch failed
+[2m10:23:58[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /setup/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m10:23:58[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/v1/settings/public?timezone=Asia%2FShanghai[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[vite] 无法获取公开配置，将回退到 API 调用: fetch failed
+[2m10:27:47[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /setup/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m10:27:47[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/v1/settings/public?timezone=Asia%2FShanghai[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[vite] 无法获取公开配置，将回退到 API 调用: fetch failed
+[2m10:27:48[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /setup/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m10:27:48[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/v1/settings/public?timezone=Asia%2FShanghai[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[vite] 无法获取公开配置，将回退到 API 调用: fetch failed
+[2m10:36:50[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /setup/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m10:36:50[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/v1/settings/public?timezone=Asia%2FShanghai[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
