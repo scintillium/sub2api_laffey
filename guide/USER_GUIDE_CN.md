@@ -5,27 +5,39 @@
 
 ## 目录
 
-- [计费模式](#计费模式)
-  - [额度来源](#额度来源)
-  - [用量在哪里看](#用量在哪里看)
-- [开始前先准备](#开始前先准备)
-  - [登录、充值和创建 API Key](#登录充值和创建-api-key)
-- [安装 CC Switch](#安装-cc-switch)
-- [Codex 配置](#codex-配置)
-  - [用 CC Switch 配置 API 信息【强烈推荐】](#用-cc-switch-配置-api-信息强烈推荐)
-  - [安装 Codex App / Codex CLI](#安装-codex-app--codex-cli)
-  - [Codex App 安装与使用](#codex-app-安装与使用)
-  - [Codex CLI 安装与使用](#codex-cli-安装与使用)
-- [配置 Claude](#配置-claude)
-  - [用 CC Switch 配置 Claude 信息【推荐】](#用-cc-switch-配置-claude-信息推荐)
-  - [安装 Claude Code](#安装-claude-code)
-  - [使用：让 Claude Code 写一个 Hello World](#使用让-claude-code-写一个-hello-world)
-- [常见问题](#常见问题)
-  - [CC Switch 导入失败](#cc-switch-导入失败)
-  - [Codex CLI 不能用](#codex-cli-不能用)
-  - [Claude Code 不能用](#claude-code-不能用)
-  - [API Key 泄露了怎么办](#api-key-泄露了怎么办)
-  - [换服务商或换分组怎么做](#换服务商或换分组怎么做)
+- [Laffey API 使用文档](#laffey-api-使用文档)
+  - [目录](#目录)
+  - [计费模式](#计费模式)
+    - [额度来源](#额度来源)
+    - [用量在哪里看](#用量在哪里看)
+  - [开始前先准备](#开始前先准备)
+    - [登录、充值和创建 API Key](#登录充值和创建-api-key)
+  - [安装 CC Switch](#安装-cc-switch)
+  - [Codex 配置](#codex-配置)
+    - [用 CC Switch 配置 API 信息【强烈推荐】](#用-cc-switch-配置-api-信息强烈推荐)
+    - [安装 Codex App / Codex CLI](#安装-codex-app--codex-cli)
+      - [Codex App 和 Codex CLI 的区别](#codex-app-和-codex-cli-的区别)
+    - [Codex App 安装与使用](#codex-app-安装与使用)
+      - [1. 安装](#1-安装)
+      - [2. 使用：让 Codex App 写一个 Hello World](#2-使用让-codex-app-写一个-hello-world)
+    - [Codex CLI 安装与使用](#codex-cli-安装与使用)
+      - [1. 不同系统下的安装](#1-不同系统下的安装)
+        - [Windows 安装](#windows-安装)
+        - [macOS 安装方式一：Homebrew](#macos-安装方式一homebrew)
+        - [macOS 安装方式二：Node.js / npm](#macos-安装方式二nodejs--npm)
+      - [2. 使用：让 Codex CLI 写一个 Hello World](#2-使用让-codex-cli-写一个-hello-world)
+  - [配置 Claude](#配置-claude)
+    - [用 CC Switch 配置 Claude 信息【推荐】](#用-cc-switch-配置-claude-信息推荐)
+    - [安装 Claude Code](#安装-claude-code)
+      - [Windows 安装](#windows-安装-1)
+      - [macOS 安装](#macos-安装)
+    - [使用：让 Claude Code 写一个 Hello World](#使用让-claude-code-写一个-hello-world)
+  - [常见问题](#常见问题)
+    - [CC Switch 导入失败](#cc-switch-导入失败)
+    - [Codex CLI 不能用](#codex-cli-不能用)
+    - [Claude Code 不能用](#claude-code-不能用)
+    - [API Key 泄露了怎么办](#api-key-泄露了怎么办)
+    - [换服务商或换分组怎么做](#换服务商或换分组怎么做)
 
 ## 计费模式
 
@@ -138,57 +150,48 @@ Codex App 建议直接下载安装包。普通用户不需要打开命令行，�
 
 下面只做一个最小示例：让 Codex App 在空文件夹里写一个 `hello.py`。
 
-![Codex App 界面示例](images/user-guide/codex-app-thread.png)
 
 1. 打开 Codex App，确认当前供应商已经切换到 Laffey API / Codex。
 
 2. 新建一个空文件夹，例如：
 
    ```text
-   hello-codex
+   helloworld
    ```
 
-   然后在 Codex App 中打开这个文件夹。
+   然后在 Codex App 添加项目添加这个文件夹。
 
-3. 在 Codex App 输入框附近找到模式选择，把模式切换为 **Plan / 计划**。这个模式会先让 Codex 给出方案，不会立刻改文件。
+1. 在 Codex App 输入框附近找到模式选择，把模式切换为 **Plan / 计划**。这个模式会先让 Codex 给出方案，不会立刻改文件。
+![1778638297751](images/user-guide/1778638297751.png)
 
-4. 切换到计划模式后，在输入框里输入：
+2. 切换到计划模式后，在输入框里输入：
 
    ```text
    请为当前文件夹里的 Python Hello World 示例制定一个简短计划。
    目标：
-   1. 新建 hello.py
-   2. 内容输出 Hello, Laffey API!
+   1. 新建 helloworld.py
+   2. 内容输出 Hello, world!
    3. 新建 README.md，说明如何运行
    ```
+   然后codex会返回一个执行计划文本
+   ![1778638685244](images/user-guide/1778638685244.png)
 
-5. 先阅读 Codex 给出的计划。确认计划里只会创建 `hello.py` 和 `README.md` 后，把模式切回 **Code / 执行**，再回复：
+3. 先阅读 Codex 给出的计划。
 
-   ```text
-   计划没问题，请按这个计划执行。
-   ```
+   如果计划不符合预期，可以继续和对话框选择否，和codex对话修改需求。
+   如果计划合适，选择实施计划。 这里我选择“是，实施此计划”
 
-6. 等 Codex 生成修改后，检查它准备创建的文件。确认内容没有问题后，点击接受/应用修改。
+4. Codex 这时候会自动切出plan模式来创建代码。
+   可以看到 Codex 生成了一个 `helloworld.py`文件
+   ![1778638983847](images/user-guide/1778638983847.png)
 
-   预期 `hello.py` 类似：
+5. 这是我们要求 Codex 直接运行代码，展示结果
 
-   ```python
-   print("Hello, Laffey API!")
-   ```
+   ![Codex 运行 Hello World 结果](images/user-guide/codex-app-run-result.png)
 
-7. 运行 `hello.py` 测试结果。如果 Codex App 支持内置终端，可以直接在 App 里运行；否则打开系统终端进入该目录运行：
+   可以看到，程序正常输出，大功告成！
 
-   ```bash
-   python hello.py
-   ```
-
-   看到下面输出即表示成功：
-
-   ```text
-   Hello, Laffey API!
-   ```
-
-8. 如果后续新增或更换了 API Key，回到 Laffey API 的 **API 密钥** 页面重新点击 **导入到 CCS**，然后在 Codex App 中切换到新的 Laffey API 供应商。
+6. 如果后续新增或更换了 API Key，回到 Laffey API 的 **API 密钥** 页面重新点击 **导入到 CCS**，然后在 Codex App 中切换到新的 Laffey API 供应商。
 
 ### Codex CLI 安装与使用
 
@@ -241,19 +244,19 @@ Codex CLI 需要先安装 Node.js 和 npm，或者在 macOS 上使用 Homebrew �
 
 ##### macOS 安装方式一：Homebrew
 
-如果没有安装 `homebrew`，请查看安装方式二。
+1. 如果没有安装 `homebrew`，请查看安装方式二。
 
-打开终端，执行：
+   打开终端，执行：
 
-```bash
-brew install --cask codex
-```
+   ```bash
+   brew install --cask codex
+   ```
 
-检查 Codex CLI 是否安装成功：
+2. 检查 Codex CLI 是否安装成功：
 
-```bash
-codex --version
-```
+   ```bash
+   codex --version
+   ```
 
 ##### macOS 安装方式二：Node.js / npm
 

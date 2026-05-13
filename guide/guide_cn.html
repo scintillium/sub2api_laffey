@@ -17,7 +17,10 @@
     .toc-level-3 { padding-left: 22px !important; font-size: 13px !important; color: #526276 !important; } .toc-level-4 { padding-left: 34px !important; font-size: 12px !important; color: #64748b !important; } .toc-level-5 { padding-left: 46px !important; font-size: 12px !important; color: #77859a !important; }
     .content { padding: 42px min(7vw, 92px); } article { max-width: 980px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 44px min(6vw, 68px); }
     h1, h2, h3, h4, h5, h6 { line-height: 1.35; scroll-margin-top: 24px; } h1 { margin: 0 0 26px; font-size: 34px; } h2 { margin: 44px 0 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 26px; } h3 { margin: 30px 0 12px; font-size: 21px; } h4 { margin: 24px 0 10px; font-size: 17px; } h5 { margin: 20px 0 8px; font-size: 15px; }
-    p { margin: 12px 0; } strong { font-weight: 700; } code { padding: 2px 6px; border-radius: 6px; background: #eef2f7; font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 0.92em; } pre { margin: 16px 0; padding: 16px 18px; overflow: auto; border-radius: 10px; background: var(--code-bg); } pre code { padding: 0; background: transparent; color: var(--code-text); font-size: 14px; }
+    p { margin: 12px 0; } strong { font-weight: 700; } code { padding: 2px 6px; border-radius: 6px; background: #eef2f7; font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 0.92em; } pre { position: relative; margin: 16px 0; padding: 46px 18px 16px; overflow: auto; border-radius: 10px; background: var(--code-bg); } pre code { padding: 0; background: transparent; color: var(--code-text); font-size: 14px; }
+    .copy-code-button { position: absolute; top: 10px; right: 10px; border: 1px solid rgba(229, 231, 235, 0.22); border-radius: 7px; padding: 5px 10px; background: rgba(255, 255, 255, 0.08); color: var(--code-text); font: 12px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+    .copy-code-button:hover, .copy-code-button:focus-visible { background: rgba(255, 255, 255, 0.16); border-color: rgba(229, 231, 235, 0.42); outline: none; }
+    .copy-code-button.is-copied { border-color: rgba(20, 184, 166, 0.55); color: #99f6e4; }
     blockquote { margin: 16px 0; padding: 12px 16px; border-left: 4px solid var(--accent); background: var(--accent-soft); color: #24413f; border-radius: 0 8px 8px 0; } .nice-list { padding-left: 22px; margin: 12px 0 18px; } .nice-list li { margin: 6px 0; }
     .step { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; margin: 10px 0; } .step-number { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: white; font-size: 13px; font-weight: 700; line-height: 1; }
     figure { margin: 18px 0 24px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #f8fafc; } figure img { display: block; width: 100%; height: auto; } figcaption { padding: 8px 12px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
@@ -28,295 +31,312 @@
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <h2>&#30446;&#24405;</h2>
-      <nav class="toc" aria-label="&#39029;&#38754;&#30446;&#24405;">
-<a class="toc-level-2" href="#计费模式">计费模式</a>
-<a class="toc-level-3" href="#额度来源">额度来源</a>
-<a class="toc-level-3" href="#用量在哪里看">用量在哪里看</a>
-<a class="toc-level-2" href="#开始前先准备">开始前先准备</a>
-<a class="toc-level-3" href="#登录充值和创建-API-Key">登录、充值和创建 API Key</a>
-<a class="toc-level-2" href="#安装-CC-Switch">安装 CC Switch</a>
-<a class="toc-level-2" href="#Codex-配置">Codex 配置</a>
-<a class="toc-level-3" href="#用-CC-Switch-配置-API-信息强烈推荐">用 CC Switch 配置 API 信息【强烈推荐】</a>
-<a class="toc-level-3" href="#安装-Codex-App-Codex-CLI">安装 Codex App / Codex CLI</a>
-<a class="toc-level-4" href="#Codex-App-和-Codex-CLI-的区别">Codex App 和 Codex CLI 的区别</a>
-<a class="toc-level-3" href="#Codex-App-安装与使用">Codex App 安装与使用</a>
-<a class="toc-level-4" href="#1-安装">1. 安装</a>
-<a class="toc-level-4" href="#2-使用让-Codex-App-写一个-Hello-World">2. 使用：让 Codex App 写一个 Hello World</a>
-<a class="toc-level-3" href="#Codex-CLI-安装与使用">Codex CLI 安装与使用</a>
-<a class="toc-level-4" href="#1-不同系统下的安装">1. 不同系统下的安装</a>
-<a class="toc-level-5" href="#Windows-安装">Windows 安装</a>
-<a class="toc-level-5" href="#macOS-安装方式一Homebrew">macOS 安装方式一：Homebrew</a>
-<a class="toc-level-5" href="#macOS-安装方式二Nodejs-npm">macOS 安装方式二：Node.js / npm</a>
-<a class="toc-level-4" href="#2-使用让-Codex-CLI-写一个-Hello-World">2. 使用：让 Codex CLI 写一个 Hello World</a>
-<a class="toc-level-2" href="#配置-Claude">配置 Claude</a>
-<a class="toc-level-3" href="#用-CC-Switch-配置-Claude-信息推荐">用 CC Switch 配置 Claude 信息【推荐】</a>
-<a class="toc-level-3" href="#安装-Claude-Code">安装 Claude Code</a>
-<a class="toc-level-4" href="#Windows-安装-2">Windows 安装</a>
-<a class="toc-level-4" href="#macOS-安装">macOS 安装</a>
-<a class="toc-level-3" href="#使用让-Claude-Code-写一个-Hello-World">使用：让 Claude Code 写一个 Hello World</a>
-<a class="toc-level-2" href="#常见问题">常见问题</a>
-<a class="toc-level-3" href="#CC-Switch-导入失败">CC Switch 导入失败</a>
-<a class="toc-level-3" href="#Codex-CLI-不能用">Codex CLI 不能用</a>
-<a class="toc-level-3" href="#Claude-Code-不能用">Claude Code 不能用</a>
-<a class="toc-level-3" href="#API-Key-泄露了怎么办">API Key 泄露了怎么办</a>
-<a class="toc-level-3" href="#换服务商或换分组怎么做">换服务商或换分组怎么做</a>
+      <h2>目录</h2>
+      <nav class="toc" aria-label="页面目录">
+<a class="toc-level-2" href="#section-2">计费模式</a>
+<a class="toc-level-3" href="#section-3">额度来源</a>
+<a class="toc-level-3" href="#section-4">用量在哪里看</a>
+<a class="toc-level-2" href="#section-5">开始前先准备</a>
+<a class="toc-level-3" href="#api-key">登录、充值和创建 API Key</a>
+<a class="toc-level-2" href="#cc-switch">安装 CC Switch</a>
+<a class="toc-level-2" href="#codex">Codex 配置</a>
+<a class="toc-level-3" href="#cc-switch-api">用 CC Switch 配置 API 信息【强烈推荐】</a>
+<a class="toc-level-3" href="#codex-app-codex-cli">安装 Codex App / Codex CLI</a>
+<a class="toc-level-4" href="#codex-app-codex-cli-1">Codex App 和 Codex CLI 的区别</a>
+<a class="toc-level-3" href="#codex-app">Codex App 安装与使用</a>
+<a class="toc-level-4" href="#section-12">1. 安装</a>
+<a class="toc-level-4" href="#2-codex-app-hello-world">2. 使用：让 Codex App 写一个 Hello World</a>
+<a class="toc-level-3" href="#codex-cli">Codex CLI 安装与使用</a>
+<a class="toc-level-4" href="#section-15">1. 不同系统下的安装</a>
+<a class="toc-level-5" href="#windows">Windows 安装</a>
+<a class="toc-level-5" href="#macos-homebrew">macOS 安装方式一：Homebrew</a>
+<a class="toc-level-5" href="#macos-node-js-npm">macOS 安装方式二：Node.js / npm</a>
+<a class="toc-level-4" href="#2-codex-cli-hello-world">2. 使用：让 Codex CLI 写一个 Hello World</a>
+<a class="toc-level-2" href="#claude">配置 Claude</a>
+<a class="toc-level-3" href="#cc-switch-claude">用 CC Switch 配置 Claude 信息【推荐】</a>
+<a class="toc-level-3" href="#claude-code">安装 Claude Code</a>
+<a class="toc-level-4" href="#windows-1">Windows 安装</a>
+<a class="toc-level-4" href="#macos">macOS 安装</a>
+<a class="toc-level-3" href="#claude-code-hello-world">使用：让 Claude Code 写一个 Hello World</a>
+<a class="toc-level-2" href="#section-25">常见问题</a>
+<a class="toc-level-3" href="#cc-switch-1">CC Switch 导入失败</a>
+<a class="toc-level-3" href="#codex-cli-1">Codex CLI 不能用</a>
+<a class="toc-level-3" href="#claude-code-1">Claude Code 不能用</a>
+<a class="toc-level-3" href="#api-key-1">API Key 泄露了怎么办</a>
+<a class="toc-level-3" href="#section-26">换服务商或换分组怎么做</a>
       </nav>
     </aside>
     <main class="content"><article>
-<h1 id="Laffey-API-使用文档">Laffey API 使用文档</h1>
-<blockquote>适用对象：第一次使用中转站、Codex、Claude Code、CC Switch 的用户。<br>文档目标：照着做即可，不展开复杂原理。</blockquote>
-<h2 id="计费模式">计费模式</h2>
+<h1 id="laffey-api">Laffey API 使用文档</h1>
+<blockquote>适用对象：第一次使用中转站、Codex、Claude Code、CC Switch 的用户。 文档目标：照着做即可，不展开复杂原理。</blockquote>
+<h2 id="section-2">计费模式</h2>
 <p>本站的用法可以理解为：你不用把真实账号直接配置到每个工具里，只需要使用 Laffey API 发给你的中转地址和 API Key。实际请求产生的费用会从你的站内额度中扣除。</p>
 <p>本站的站内额度以 <strong>美元额度（USD）</strong> 显示和扣减，但充值入口使用人民币金额。当前换算规则为：</p>
 <pre><code class="language-text">1 RMB 充值 = 1 USD 站内额度</code></pre>
 <p>例如充值 10 RMB，到账后会获得 10 USD 站内额度。后续使用 Codex、Claude Code 或其他兼容客户端时，系统会按照模型用量、分组倍率和计费规则从该额度中扣除。</p>
-<h3 id="额度来源">额度来源</h3>
+<h3 id="section-3">额度来源</h3>
 <div class="table-wrap"><table><thead><tr><th>来源</th><th>说明</th><th>到账形式</th></tr></thead><tbody><tr><td>在线充值</td><td>通过站内充值入口支付人民币</td><td>按 1 RMB = 1 USD 换算为站内美元额度</td></tr><tr><td>优惠券</td><td>活动、补偿或人工发放的优惠</td><td>折算为站内美元额度</td></tr><tr><td>兑换码</td><td>输入管理员发放的兑换码</td><td>可兑换为站内美元额度，也可能包含并发或订阅权限</td></tr><tr><td>管理员赠送</td><td>管理员直接为账号增加余额或额度</td><td>按站内美元额度显示</td></tr></tbody></table></div>
-<h3 id="用量在哪里看">用量在哪里看</h3>
+<h3 id="section-4">用量在哪里看</h3>
 <div class="step"><span class="step-number">1</span><div>登录 Laffey API, 进入 <strong>仪表盘</strong>。</div></div>
 <div class="step"><span class="step-number">2</span><div>查看模型、时间、Token、费用、状态。</div></div>
 <div class="step"><span class="step-number">3</span><div>如果某次请求失败，先看错误信息，再看余额和分组是否正确。</div></div>
-<h2 id="开始前先准备">开始前先准备</h2>
-<h3 id="登录充值和创建-API-Key">登录、充值和创建 API Key</h3>
+<h2 id="section-5">开始前先准备</h2>
+<h3 id="api-key">登录、充值和创建 API Key</h3>
 <div class="step"><span class="step-number">1</span><div>进入 <strong>充值/订阅</strong>，完成充值，或确认你的订阅还有可用额度。</div></div>
-<div class="step"><span class="step-number">2</span><div>进入左侧 <strong>我的账户</strong>，点击 <strong>API 密钥</strong>，接着点击 <strong>创建密钥</strong>。</div></div>
-<p><figure><img src="images/user-guide/api-key-create-button.png" alt="创建 API 密钥按钮"><figcaption>创建 API 密钥按钮</figcaption></figure></p>
-<div class="step"><span class="step-number">3</span><div>名称填写，例如：</div></div>
-<ul class="nice-list"><li><code>Codex 日常使用</code></li><li><code>Claude Code 编程</code></li></ul>
-<div class="step"><span class="step-number">4</span><div>重点是选择对应分组：</div></div>
-<ul class="nice-list"><li>用 Chatgpt/Codex：选 OpenAI 分组。</li><li>用 Claude Code：选 Claude / Anthropic 分组。</li></ul>
-<p><figure><img src="images/user-guide/api-key-select-group.png" alt="选择 API 密钥分组"><figcaption>选择 API 密钥分组</figcaption></figure></p>
-<div class="step"><span class="step-number">5</span><div>点击创建后，获得一个 <code>sk-...</code> 密钥。</div></div>
-<p><figure><img src="images/user-guide/api-key-copy-created.png" alt="复制创建后的 API 密钥"><figcaption>复制创建后的 API 密钥</figcaption></figure></p>
+<div class="step"><span class="step-number">2</span><div>进入左侧 <strong>我的账户</strong>，点击 <strong>API 密钥</strong>，接着点击 <strong>创建密钥</strong>。<p><figure><img src="images/user-guide/api-key-create-button.png" alt="创建 API 密钥按钮"><figcaption>创建 API 密钥按钮</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">3</span><div>名称填写，例如：<ul class="nice-list"><li><code>Codex 日常使用</code></li><li><code>Claude Code 编程</code></li></ul></div></div>
+<div class="step"><span class="step-number">4</span><div>重点是选择对应分组：<ul class="nice-list"><li>用 Chatgpt/Codex：选 OpenAI 分组。</li><li>用 Claude Code：选 Claude / Anthropic 分组。<p><figure><img src="images/user-guide/api-key-select-group.png" alt="选择 API 密钥分组"><figcaption>选择 API 密钥分组</figcaption></figure></p></li></ul></div></div>
+<div class="step"><span class="step-number">5</span><div>点击创建后，获得一个 <code>sk-...</code> 密钥。<p><figure><img src="images/user-guide/api-key-copy-created.png" alt="复制创建后的 API 密钥"><figcaption>复制创建后的 API 密钥</figcaption></figure></p></div></div>
 <blockquote>API Key 可以任意创建，任意复制，随时可以回来取</blockquote>
-<h2 id="安装-CC-Switch">安装 CC Switch</h2>
+<h2 id="cc-switch">安装 CC Switch</h2>
 <p>CC Switch 用来保存多个服务商配置，并在 Codex / Claude 等 agent 之间切换。强烈建议先安装它，后面配置 Codex CLI 和 Claude Code 会更省事。</p>
 <p>下载链接：<a href="https://ccswitch.ai/" target="_blank" rel="noopener noreferrer">CC Switch 官网</a> / <a href="https://github.com/farion1231/cc-switch/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> / <a href="https://1drv.ms/f/c/90f4cc5b88f514bf/IgCZ3hpZwYeaSb4WyYu414XJAS2-aNUItNCwhHlJWAsCZJI?e=Zhrieb" target="_blank" rel="noopener noreferrer">国内网盘下载</a></p>
-<h2 id="Codex-配置">Codex 配置</h2>
+<h2 id="codex">Codex 配置</h2>
 <p>Codex 可以通过官方 App 使用，也可以通过 Codex CLI 在终端里使用。Laffey API 同时支持这两种方式，先用 CC Switch 导入一次供应商配置，后面在 Codex App 或 Codex CLI 中切换到这个供应商即可。</p>
-<h3 id="用-CC-Switch-配置-API-信息强烈推荐">用 CC Switch 配置 API 信息【强烈推荐】</h3>
+<h3 id="cc-switch-api">用 CC Switch 配置 API 信息【强烈推荐】</h3>
 <p>这一节的目标是：把你刚才创建的 Laffey API Key 导入到 CC Switch，让 CC Switch 帮你管理 Codex 的服务商配置。</p>
-<div class="step"><span class="step-number">1</span><div>第一步 在左侧菜单进入 <strong>我的账户 → API 密钥</strong>。找到要给 Codex 使用的那条 API Key，点击右侧的 <strong>导入到 CCS</strong>。</div></div>
-<p><figure><img src="images/user-guide/codex-import-to-ccs.png" alt="导入 API 密钥到 CC Switch"><figcaption>导入 API 密钥到 CC Switch</figcaption></figure></p>
-<div class="step"><span class="step-number">2</span><div>浏览器弹出“是否允许打开 CC Switch”或类似提示时，选择 <strong>允许</strong>。</div></div>
-<p>如果浏览器没有弹窗，或者点击后没有反应，先确认 CC Switch 已经安装并打开过一次。浏览器需要能识别 <code>ccswitch://</code> 这种外部应用链接。</p>
-<p><figure><img src="images/user-guide/browser-open-ccswitch.png" alt="浏览器打开 CC Switch 确认弹窗"><figcaption>浏览器打开 CC Switch 确认弹窗</figcaption></figure></p>
-<div class="step"><span class="step-number">3</span><div>CC Switch 打开后，点击上方模型图标，启动导入的供应商配置。切换完成后，Codex App 和 Codex CLI 都可以使用这个中转配置。</div></div>
-<p><figure><img src="images/user-guide/ccswitch-codex-provider.png" alt="CC Switch 中的 Laffey API 供应商配置"><figcaption>CC Switch 中的 Laffey API 供应商配置</figcaption></figure></p>
-<h3 id="安装-Codex-App-Codex-CLI">安装 Codex App / Codex CLI</h3>
+<div class="step"><span class="step-number">1</span><div>第一步 在左侧菜单进入 <strong>我的账户 → API 密钥</strong>。找到要给 Codex 使用的那条 API Key，点击右侧的 <strong>导入到 CCS</strong>。<p><figure><img src="images/user-guide/codex-import-to-ccs.png" alt="导入 API 密钥到 CC Switch"><figcaption>导入 API 密钥到 CC Switch</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">2</span><div>浏览器弹出“是否允许打开 CC Switch”或类似提示时，选择 <strong>允许</strong>。<p>如果浏览器没有弹窗，或者点击后没有反应，先确认 CC Switch 已经安装并打开过一次。浏览器需要能识别 <code>ccswitch://</code> 这种外部应用链接。</p>
+<p><figure><img src="images/user-guide/browser-open-ccswitch.png" alt="浏览器打开 CC Switch 确认弹窗"><figcaption>浏览器打开 CC Switch 确认弹窗</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">3</span><div>CC Switch 打开后，点击上方模型图标，启动导入的供应商配置。切换完成后，Codex App 和 Codex CLI 都可以使用这个中转配置。<p><figure><img src="images/user-guide/ccswitch-codex-provider.png" alt="CC Switch 中的 Laffey API 供应商配置"><figcaption>CC Switch 中的 Laffey API 供应商配置</figcaption></figure></p></div></div>
+<h3 id="codex-app-codex-cli">安装 Codex App / Codex CLI</h3>
 <blockquote>注意：使用 Laffey API 中转时，请在 Codex App 或 Codex CLI 中选择刚才通过 CC Switch 导入的 Laffey API 供应商。</blockquote>
-<h4 id="Codex-App-和-Codex-CLI-的区别">Codex App 和 Codex CLI 的区别</h4>
+<h4 id="codex-app-codex-cli-1">Codex App 和 Codex CLI 的区别</h4>
 <div class="table-wrap"><table><thead><tr><th>对比项</th><th>Codex App</th><th>Codex CLI</th></tr></thead><tbody><tr><td>使用方式</td><td>图形界面操作</td><td>终端输入命令</td></tr><tr><td>适合场景</td><td>看任务、审查代码、用图形界面管理任务</td><td>在项目目录中让 Codex 直接读写文件、运行测试</td></tr><tr><td>排错难度</td><td>界面友好，但底层配置不一定可见</td><td>配置文件清晰，适合排查 Base URL / Key 问题</td></tr></tbody></table></div>
-<h3 id="Codex-App-安装与使用">Codex App 安装与使用</h3>
-<h4 id="1-安装">1. 安装</h4>
+<h3 id="codex-app">Codex App 安装与使用</h3>
+<h4 id="section-12">1. 安装</h4>
 <p>Codex App 建议直接下载安装包。普通用户不需要打开命令行，也不需要手动安装 Node.js。</p>
 <div class="table-wrap"><table><thead><tr><th>下载方式</th><th>链接</th><th>说明</th></tr></thead><tbody><tr><td>官网下载</td><td><a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">OpenAI Codex 官网</a></td><td>进入页面后点击 Download 下载</td></tr><tr><td>微软商店下载</td><td><a href="https://apps.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Store</a></td><td>Windows 用户可在微软商店搜索 Codex</td></tr><tr><td>苹果商店下载</td><td><a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">Mac App Store</a></td><td>macOS 用户可在苹果商店搜索 Codex</td></tr></tbody></table></div>
-<h4 id="2-使用让-Codex-App-写一个-Hello-World">2. 使用：让 Codex App 写一个 Hello World</h4>
+<h4 id="2-codex-app-hello-world">2. 使用：让 Codex App 写一个 Hello World</h4>
 <p>下面只做一个最小示例：让 Codex App 在空文件夹里写一个 <code>hello.py</code>。</p>
-<p><figure><img src="images/user-guide/codex-app-thread.png" alt="Codex App 界面示例"><figcaption>Codex App 界面示例</figcaption></figure></p>
 <div class="step"><span class="step-number">1</span><div>打开 Codex App，确认当前供应商已经切换到 Laffey API / Codex。</div></div>
-<div class="step"><span class="step-number">2</span><div>新建一个空文件夹，例如：</div></div>
-<pre><code class="language-text">   hello-codex</code></pre>
-<p>然后在 Codex App 中打开这个文件夹。</p>
-<div class="step"><span class="step-number">3</span><div>在 Codex App 输入框附近找到模式选择，把模式切换为 <strong>Plan / 计划</strong>。这个模式会先让 Codex 给出方案，不会立刻改文件。</div></div>
-<div class="step"><span class="step-number">4</span><div>切换到计划模式后，在输入框里输入：</div></div>
-<pre><code class="language-text">   请为当前文件夹里的 Python Hello World 示例制定一个简短计划。
-   目标：
-   1. 新建 hello.py
-   2. 内容输出 Hello, Laffey API!
-   3. 新建 README.md，说明如何运行</code></pre>
-<div class="step"><span class="step-number">5</span><div>先阅读 Codex 给出的计划。确认计划里只会创建 <code>hello.py</code> 和 <code>README.md</code> 后，把模式切回 <strong>Code / 执行</strong>，再回复：</div></div>
-<pre><code class="language-text">   计划没问题，请按这个计划执行。</code></pre>
-<div class="step"><span class="step-number">6</span><div>等 Codex 生成修改后，检查它准备创建的文件。确认内容没有问题后，点击接受/应用修改。</div></div>
-<p>预期 <code>hello.py</code> 类似：</p>
-<pre><code class="language-python">   print(&quot;Hello, Laffey API!&quot;)</code></pre>
-<div class="step"><span class="step-number">7</span><div>运行 <code>hello.py</code> 测试结果。如果 Codex App 支持内置终端，可以直接在 App 里运行；否则打开系统终端进入该目录运行：</div></div>
-<pre><code class="language-bash">   python hello.py</code></pre>
-<p>看到下面输出即表示成功：</p>
-<pre><code class="language-text">   Hello, Laffey API!</code></pre>
+<div class="step"><span class="step-number">2</span><div>新建一个空文件夹，例如：<pre><code class="language-text">helloworld</code></pre>
+<p>然后在 Codex App 添加项目添加这个文件夹。</p></div></div>
+<div class="step"><span class="step-number">3</span><div>在 Codex App 输入框附近找到模式选择，把模式切换为 <strong>Plan / 计划</strong>。这个模式会先让 Codex 给出方案，不会立刻改文件。<p><figure><img src="images/user-guide/1778638297751.png" alt="1778638297751"><figcaption>1778638297751</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">4</span><div>切换到计划模式后，在输入框里输入：<pre><code class="language-text">请为当前文件夹里的 Python Hello World 示例制定一个简短计划。
+目标：
+1. 新建 helloworld.py
+2. 内容输出 Hello, world!
+3. 新建 README.md，说明如何运行</code></pre>
+<p>然后codex会返回一个执行计划文本</p>
+<p><figure><img src="images/user-guide/1778638685244.png" alt="1778638685244"><figcaption>1778638685244</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">5</span><div>先阅读 Codex 给出的计划。<p>如果计划不符合预期，可以继续和对话框选择否，和codex对话修改需求。 如果计划合适，选择实施计划。 这里我选择“是，实施此计划”</p></div></div>
+<div class="step"><span class="step-number">6</span><div>Codex 这时候会自动切出plan模式来创建代码。<p>可以看到 Codex 生成了一个 <code>helloworld.py</code>文件</p>
+<p><figure><img src="images/user-guide/1778638983847.png" alt="1778638983847"><figcaption>1778638983847</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">7</span><div>这是我们要求 Codex 直接运行代码，展示结果<p><figure><img src="images/user-guide/codex-app-run-result.png" alt="Codex 运行 Hello World 结果"><figcaption>Codex 运行 Hello World 结果</figcaption></figure></p>
+<p>可以看到，程序正常输出，大功告成！</p></div></div>
 <div class="step"><span class="step-number">8</span><div>如果后续新增或更换了 API Key，回到 Laffey API 的 <strong>API 密钥</strong> 页面重新点击 <strong>导入到 CCS</strong>，然后在 Codex App 中切换到新的 Laffey API 供应商。</div></div>
-<h3 id="Codex-CLI-安装与使用">Codex CLI 安装与使用</h3>
-<h4 id="1-不同系统下的安装">1. 不同系统下的安装</h4>
+<h3 id="codex-cli">Codex CLI 安装与使用</h3>
+<h4 id="section-15">1. 不同系统下的安装</h4>
 <p>Codex CLI 需要先安装 Node.js 和 npm，或者在 macOS 上使用 Homebrew 直接安装。</p>
-<h5 id="Windows-安装">Windows 安装</h5>
+<h5 id="windows">Windows 安装</h5>
 <div class="step"><span class="step-number">1</span><div>进入官网下载并安装 Node.js：<a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js 官网</a>。</div></div>
-<div class="step"><span class="step-number">2</span><div>安装完成后，打开 PowerShell。</div></div>
-<p>点击 Windows 开始菜单，搜索 <code>PowerShell</code>，打开 <strong>Windows PowerShell</strong>。</p>
-<p><figure><img src="images/user-guide/windows-open-powershell.png" alt="打开 Windows PowerShell"><figcaption>打开 Windows PowerShell</figcaption></figure></p>
-<div class="step"><span class="step-number">3</span><div>检查 Node.js 和 npm 是否安装成功。</div></div>
-<p>在 PowerShell 中输入下面两行命令，每输入一行按一次回车：</p>
-<pre><code class="language-powershell">   node -v
-   npm -v</code></pre>
+<div class="step"><span class="step-number">2</span><div>安装完成后，打开 PowerShell。<p>点击 Windows 开始菜单，搜索 <code>PowerShell</code>，打开 <strong>Windows PowerShell</strong>。</p>
+<p><figure><img src="images/user-guide/windows-open-powershell.png" alt="打开 Windows PowerShell"><figcaption>打开 Windows PowerShell</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">3</span><div>检查 Node.js 和 npm 是否安装成功。<p>在 PowerShell 中输入下面两行命令，每输入一行按一次回车：</p>
+<pre><code class="language-powershell">node -v
+npm -v</code></pre>
 <p>如果两行都显示版本号，例如 <code>v22.x.x</code> 和 <code>10.x.x</code>，说明安装成功。如果提示找不到命令，关闭 PowerShell 后重新打开再试一次。</p>
-<p><figure><img src="images/user-guide/windows-node-npm-check.png" alt="检查 Node.js 和 npm 版本"><figcaption>检查 Node.js 和 npm 版本</figcaption></figure></p>
-<div class="step"><span class="step-number">4</span><div>安装 Codex CLI。</div></div>
-<p>继续在 PowerShell 中输入：</p>
-<pre><code class="language-powershell">   npm install -g @openai/codex --registry=https://registry.npmmirror.com</code></pre>
-<p>这一步可能需要等待几十秒到几分钟。等命令执行结束，重新出现可以输入命令的提示符后，再继续下一步。</p>
-<div class="step"><span class="step-number">5</span><div>检查 Codex CLI 是否安装成功。</div></div>
-<pre><code class="language-powershell">   codex --version</code></pre>
+<p><figure><img src="images/user-guide/windows-node-npm-check.png" alt="检查 Node.js 和 npm 版本"><figcaption>检查 Node.js 和 npm 版本</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">4</span><div>安装 Codex CLI。<p>继续在 PowerShell 中输入：</p>
+<pre><code class="language-powershell">npm install -g @openai/codex --registry=https://registry.npmmirror.com</code></pre>
+<p>这一步可能需要等待几十秒到几分钟。等命令执行结束，重新出现可以输入命令的提示符后，再继续下一步。</p></div></div>
+<div class="step"><span class="step-number">5</span><div>检查 Codex CLI 是否安装成功。<pre><code class="language-powershell">codex --version</code></pre>
 <p>如果能显示版本号，说明 Codex CLI 安装成功。</p>
-<p><figure><img src="images/user-guide/codex-cli-version-check.png" alt="检查 Codex CLI 版本"><figcaption>检查 Codex CLI 版本</figcaption></figure></p>
-<h5 id="macOS-安装方式一Homebrew">macOS 安装方式一：Homebrew</h5>
-<p>如果没有安装 <code>homebrew</code>，请查看安装方式二。</p>
-<p>打开终端，执行：</p>
-<pre><code class="language-bash">brew install --cask codex</code></pre>
-<p>检查 Codex CLI 是否安装成功：</p>
-<pre><code class="language-bash">codex --version</code></pre>
-<h5 id="macOS-安装方式二Nodejs-npm">macOS 安装方式二：Node.js / npm</h5>
+<p><figure><img src="images/user-guide/codex-cli-version-check.png" alt="检查 Codex CLI 版本"><figcaption>检查 Codex CLI 版本</figcaption></figure></p></div></div>
+<h5 id="macos-homebrew">macOS 安装方式一：Homebrew</h5>
+<div class="step"><span class="step-number">1</span><div>如果没有安装 <code>homebrew</code>，请查看安装方式二。<p>打开终端，执行：</p>
+<pre><code class="language-bash">brew install --cask codex</code></pre></div></div>
+<div class="step"><span class="step-number">2</span><div>检查 Codex CLI 是否安装成功：<pre><code class="language-bash">codex --version</code></pre></div></div>
+<h5 id="macos-node-js-npm">macOS 安装方式二：Node.js / npm</h5>
 <div class="step"><span class="step-number">1</span><div>下载并安装 Node.js：<a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js 官网</a>。</div></div>
-<div class="step"><span class="step-number">2</span><div>打开终端，执行：</div></div>
-<pre><code class="language-bash">   npm install -g @openai/codex</code></pre>
-<div class="step"><span class="step-number">3</span><div>检查 Codex CLI 是否安装成功：</div></div>
-<pre><code class="language-bash">   codex --version</code></pre>
-<h4 id="2-使用让-Codex-CLI-写一个-Hello-World">2. 使用：让 Codex CLI 写一个 Hello World</h4>
+<div class="step"><span class="step-number">2</span><div>打开终端，执行：<pre><code class="language-bash">npm install -g @openai/codex</code></pre></div></div>
+<div class="step"><span class="step-number">3</span><div>检查 Codex CLI 是否安装成功：<pre><code class="language-bash">codex --version</code></pre></div></div>
+<h4 id="2-codex-cli-hello-world">2. 使用：让 Codex CLI 写一个 Hello World</h4>
 <p>Codex CLI 的使用方式是：在终端进入项目目录，运行 <code>codex</code>，然后把任务交给它。</p>
 <p><figure><img src="images/user-guide/codex-cli-preview.png" alt="Codex CLI 界面示例"><figcaption>Codex CLI 界面示例</figcaption></figure></p>
-<div class="step"><span class="step-number">1</span><div>打开 CC Switch，确认当前供应商是刚才导入的 Laffey API / Codex 供应商。</div></div>
-<p>如果你改过供应商，建议关闭旧的终端窗口，重新打开一个新终端，再继续执行下面的命令。</p>
-<div class="step"><span class="step-number">2</span><div>创建一个测试目录并进入：</div></div>
-<p>Windows PowerShell：</p>
-<pre><code class="language-powershell">   mkdir hello-codex
-   cd hello-codex</code></pre>
+<div class="step"><span class="step-number">1</span><div>打开 CC Switch，确认当前供应商是刚才导入的 Laffey API / Codex 供应商。<p>如果你改过供应商，建议关闭旧的终端窗口，重新打开一个新终端，再继续执行下面的命令。</p></div></div>
+<div class="step"><span class="step-number">2</span><div>创建一个测试目录并进入：<p>Windows PowerShell：</p>
+<pre><code class="language-powershell">mkdir hello-codex
+cd hello-codex</code></pre>
 <p>macOS / Linux 终端：</p>
-<pre><code class="language-bash">   mkdir hello-codex
-   cd hello-codex</code></pre>
-<div class="step"><span class="step-number">3</span><div>启动 Codex CLI：</div></div>
-<pre><code class="language-bash">   codex</code></pre>
-<div class="step"><span class="step-number">4</span><div>在 Codex CLI 里先使用计划模式。部分版本会在启动后提供模式选择，可以先选择 <strong>Plan / 计划</strong>；如果没有看到模式选择，就直接输入下面的任务，让 Codex 只给计划、不要马上改文件：</div></div>
-<pre><code class="language-text">   请先使用计划模式，为当前目录里的 Python Hello World 示例制定一个简短计划。
-   暂时不要修改文件。
-   目标：
-   1. 新建 hello.py
-   2. 内容输出 Hello, Laffey API!
-   3. 新建 README.md，说明运行命令</code></pre>
-<p>如果 Codex 能正常给出计划，说明 Codex CLI 已经能通过 Laffey API 工作。</p>
-<div class="step"><span class="step-number">5</span><div>阅读计划，确认它只会创建 <code>hello.py</code> 和 <code>README.md</code> 后，再让 Codex 执行。如果 CLI 有模式选择，可以切回 <strong>Code / 执行</strong>；然后在 Codex CLI 里回复：</div></div>
-<pre><code class="language-text">   计划没问题，请按这个计划执行。</code></pre>
-<div class="step"><span class="step-number">6</span><div>按 Codex CLI 的提示查看并接受修改。完成后目录里应当至少有：</div></div>
-<pre><code class="language-text">   hello.py
-   README.md</code></pre>
+<pre><code class="language-bash">mkdir hello-codex
+cd hello-codex</code></pre></div></div>
+<div class="step"><span class="step-number">3</span><div>启动 Codex CLI：<pre><code class="language-bash">codex</code></pre></div></div>
+<div class="step"><span class="step-number">4</span><div>在 Codex CLI 里先使用计划模式。部分版本会在启动后提供模式选择，可以先选择 <strong>Plan / 计划</strong>；如果没有看到模式选择，就直接输入下面的任务，让 Codex 只给计划、不要马上改文件：<pre><code class="language-text">请先使用计划模式，为当前目录里的 Python Hello World 示例制定一个简短计划。
+暂时不要修改文件。
+目标：
+1. 新建 hello.py
+2. 内容输出 Hello, Laffey API!
+3. 新建 README.md，说明运行命令</code></pre>
+<p>如果 Codex 能正常给出计划，说明 Codex CLI 已经能通过 Laffey API 工作。</p></div></div>
+<div class="step"><span class="step-number">5</span><div>阅读计划，确认它只会创建 <code>hello.py</code> 和 <code>README.md</code> 后，再让 Codex 执行。如果 CLI 有模式选择，可以切回 <strong>Code / 执行</strong>；然后在 Codex CLI 里回复：<pre><code class="language-text">计划没问题，请按这个计划执行。</code></pre></div></div>
+<div class="step"><span class="step-number">6</span><div>按 Codex CLI 的提示查看并接受修改。完成后目录里应当至少有：<pre><code class="language-text">hello.py
+README.md</code></pre>
 <p><code>hello.py</code> 预期内容类似：</p>
-<pre><code class="language-python">   print(&quot;Hello, Laffey API!&quot;)</code></pre>
-<div class="step"><span class="step-number">7</span><div>退出 Codex CLI 后运行：</div></div>
-<p>Windows PowerShell：</p>
-<pre><code class="language-powershell">   python hello.py</code></pre>
+<pre><code class="language-python">print(&quot;Hello, Laffey API!&quot;)</code></pre></div></div>
+<div class="step"><span class="step-number">7</span><div>退出 Codex CLI 后运行：<p>Windows PowerShell：</p>
+<pre><code class="language-powershell">python hello.py</code></pre>
 <p>macOS / Linux 终端：</p>
-<pre><code class="language-bash">   python3 hello.py</code></pre>
+<pre><code class="language-bash">python3 hello.py</code></pre>
 <p>看到下面输出即表示成功：</p>
-<pre><code class="language-text">   Hello, Laffey API!</code></pre>
-<div class="step"><span class="step-number">8</span><div>常用命令：</div></div>
-<p>| 命令 | 用途 | |---|---| | <code>codex</code> | 正常启动，适合第一次使用 | | <code>codex app</code> | 启动 Codex App | | <code>codex --version</code> | 查看版本，确认是否安装成功 | | <code>npm install -g @openai/codex</code> | 重新安装或升级 npm 版本的 Codex CLI |</p>
-<h2 id="配置-Claude">配置 Claude</h2>
+<pre><code class="language-text">Hello, Laffey API!</code></pre></div></div>
+<div class="step"><span class="step-number">8</span><div>常用命令：<div class="table-wrap"><table><thead><tr><th>命令</th><th>用途</th></tr></thead><tbody><tr><td><code>codex</code></td><td>正常启动，适合第一次使用</td></tr><tr><td><code>codex app</code></td><td>启动 Codex App</td></tr><tr><td><code>codex --version</code></td><td>查看版本，确认是否安装成功</td></tr><tr><td><code>npm install -g @openai/codex</code></td><td>重新安装或升级 npm 版本的 Codex CLI</td></tr></tbody></table></div></div></div>
+<h2 id="claude">配置 Claude</h2>
 <p>Claude Code 是在终端里使用的编程 agent，适合让它阅读项目、修改代码、运行命令。Laffey API 支持 Claude / Anthropic 分组，使用前请先创建一个绑定 Claude / Anthropic 分组的 API Key。</p>
-<h3 id="用-CC-Switch-配置-Claude-信息推荐">用 CC Switch 配置 Claude 信息【推荐】</h3>
+<h3 id="cc-switch-claude">用 CC Switch 配置 Claude 信息【推荐】</h3>
 <p>这一节的目标是：把 Claude Code 要用的 Laffey API Key 导入到 CC Switch，后续通过 CC Switch 切换 Claude 供应商。</p>
 <div class="step"><span class="step-number">1</span><div>进入 <strong>我的账户 → API 密钥</strong>，创建或选择一个给 Claude Code 使用的 API Key。</div></div>
 <div class="step"><span class="step-number">2</span><div>重点是分组要选择 Claude / Anthropic 相关分组。不要把 Claude Code 用的 Key 绑到 OpenAI / Codex 分组。</div></div>
 <div class="step"><span class="step-number">3</span><div>点击 API Key 右侧的 <strong>导入到 CCS</strong>。如果浏览器弹出“是否允许打开 CC Switch”，选择 <strong>允许</strong>。</div></div>
 <div class="step"><span class="step-number">4</span><div>CC Switch 打开后，在 Claude / Anthropic 对应的标签页中启用刚导入的 Laffey API 供应商。</div></div>
 <div class="step"><span class="step-number">5</span><div>切换完成后，关闭旧终端，重新打开一个新终端再启动 Claude Code。</div></div>
-<h3 id="安装-Claude-Code">安装 Claude Code</h3>
+<h3 id="claude-code">安装 Claude Code</h3>
 <p>Claude Code 需要先安装 Node.js 18 或更新版本。</p>
-<h4 id="Windows-安装-2">Windows 安装</h4>
+<h4 id="windows-1">Windows 安装</h4>
 <div class="step"><span class="step-number">1</span><div>进入官网下载并安装 Node.js：<a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js 官网</a>。</div></div>
-<div class="step"><span class="step-number">2</span><div>安装完成后，打开 PowerShell。</div></div>
-<p>点击 Windows 开始菜单，搜索 <code>PowerShell</code>，打开 <strong>Windows PowerShell</strong>。</p>
-<p><figure><img src="images/user-guide/windows-open-powershell.png" alt="打开 Windows PowerShell"><figcaption>打开 Windows PowerShell</figcaption></figure></p>
-<div class="step"><span class="step-number">3</span><div>检查 Node.js 和 npm 是否安装成功。</div></div>
-<p>在 PowerShell 中输入下面两行命令，每输入一行按一次回车：</p>
-<pre><code class="language-powershell">   node -v
-   npm -v</code></pre>
+<div class="step"><span class="step-number">2</span><div>安装完成后，打开 PowerShell。<p>点击 Windows 开始菜单，搜索 <code>PowerShell</code>，打开 <strong>Windows PowerShell</strong>。</p>
+<p><figure><img src="images/user-guide/windows-open-powershell.png" alt="打开 Windows PowerShell"><figcaption>打开 Windows PowerShell</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">3</span><div>检查 Node.js 和 npm 是否安装成功。<p>在 PowerShell 中输入下面两行命令，每输入一行按一次回车：</p>
+<pre><code class="language-powershell">node -v
+npm -v</code></pre>
 <p>如果两行都显示版本号，例如 <code>v22.x.x</code> 和 <code>10.x.x</code>，说明安装成功。如果提示找不到命令，关闭 PowerShell 后重新打开再试一次。</p>
-<p><figure><img src="images/user-guide/windows-node-npm-check.png" alt="检查 Node.js 和 npm 版本"><figcaption>检查 Node.js 和 npm 版本</figcaption></figure></p>
-<div class="step"><span class="step-number">4</span><div>安装 Claude Code。</div></div>
-<p>继续在 PowerShell 中输入：</p>
-<pre><code class="language-powershell">   npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com</code></pre>
-<p>这一步使用国内 npm 镜像，可能需要等待几十秒到几分钟。等命令执行结束，重新出现可以输入命令的提示符后，再继续下一步。</p>
-<div class="step"><span class="step-number">5</span><div>检查是否安装成功：</div></div>
-<pre><code class="language-powershell">   claude --version</code></pre>
-<h4 id="macOS-安装">macOS 安装</h4>
+<p><figure><img src="images/user-guide/windows-node-npm-check.png" alt="检查 Node.js 和 npm 版本"><figcaption>检查 Node.js 和 npm 版本</figcaption></figure></p></div></div>
+<div class="step"><span class="step-number">4</span><div>安装 Claude Code。<p>继续在 PowerShell 中输入：</p>
+<pre><code class="language-powershell">npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com</code></pre>
+<p>这一步使用国内 npm 镜像，可能需要等待几十秒到几分钟。等命令执行结束，重新出现可以输入命令的提示符后，再继续下一步。</p></div></div>
+<div class="step"><span class="step-number">5</span><div>检查是否安装成功：<pre><code class="language-powershell">claude --version</code></pre></div></div>
+<h4 id="macos">macOS 安装</h4>
 <p>如果已经安装 Node.js 18 或更新版本，可以直接执行：</p>
 <pre><code class="language-bash">npm install -g @anthropic-ai/claude-code</code></pre>
 <p>检查是否安装成功：</p>
 <pre><code class="language-bash">claude --version</code></pre>
-<h3 id="使用让-Claude-Code-写一个-Hello-World">使用：让 Claude Code 写一个 Hello World</h3>
+<h3 id="claude-code-hello-world">使用：让 Claude Code 写一个 Hello World</h3>
 <p>下面只做一个最小示例：让 Claude Code 在空文件夹里写一个 <code>hello.py</code>。</p>
 <div class="step"><span class="step-number">1</span><div>打开 CC Switch，确认当前 Claude / Anthropic 供应商已经切换到 Laffey API。</div></div>
-<div class="step"><span class="step-number">2</span><div>创建一个测试目录并进入：</div></div>
-<p>Windows PowerShell：</p>
-<pre><code class="language-powershell">   mkdir hello-claude
-   cd hello-claude</code></pre>
+<div class="step"><span class="step-number">2</span><div>创建一个测试目录并进入：<p>Windows PowerShell：</p>
+<pre><code class="language-powershell">mkdir hello-claude
+cd hello-claude</code></pre>
 <p>macOS 终端：</p>
-<pre><code class="language-bash">   mkdir hello-claude
-   cd hello-claude</code></pre>
-<div class="step"><span class="step-number">3</span><div>启动 Claude Code：</div></div>
-<pre><code class="language-bash">   claude</code></pre>
-<div class="step"><span class="step-number">4</span><div>先进入计划模式。Claude Code 通常可以按 <code>Shift + Tab</code> 在不同模式之间切换，切到 <strong>Plan Mode / 计划模式</strong> 后再输入：</div></div>
-<pre><code class="language-text">   请先为当前目录里的 Python Hello World 示例制定一个简短计划。
-   暂时不要修改文件。
-   目标：
-   1. 新建 hello.py
-   2. 内容输出 Hello, Laffey API!
-   3. 新建 README.md，说明运行命令</code></pre>
-<div class="step"><span class="step-number">5</span><div>阅读计划，确认它只会创建 <code>hello.py</code> 和 <code>README.md</code> 后，再按 <code>Shift + Tab</code> 切回可执行修改的模式，然后回复：</div></div>
-<pre><code class="language-text">   计划没问题，请按这个计划执行。</code></pre>
-<div class="step"><span class="step-number">6</span><div>按 Claude Code 的提示查看并接受修改。完成后目录里应当至少有：</div></div>
-<pre><code class="language-text">   hello.py
-   README.md</code></pre>
+<pre><code class="language-bash">mkdir hello-claude
+cd hello-claude</code></pre></div></div>
+<div class="step"><span class="step-number">3</span><div>启动 Claude Code：<pre><code class="language-bash">claude</code></pre></div></div>
+<div class="step"><span class="step-number">4</span><div>先进入计划模式。Claude Code 通常可以按 <code>Shift + Tab</code> 在不同模式之间切换，切到 <strong>Plan Mode / 计划模式</strong> 后再输入：<pre><code class="language-text">请先为当前目录里的 Python Hello World 示例制定一个简短计划。
+暂时不要修改文件。
+目标：
+1. 新建 hello.py
+2. 内容输出 Hello, Laffey API!
+3. 新建 README.md，说明运行命令</code></pre></div></div>
+<div class="step"><span class="step-number">5</span><div>阅读计划，确认它只会创建 <code>hello.py</code> 和 <code>README.md</code> 后，再按 <code>Shift + Tab</code> 切回可执行修改的模式，然后回复：<pre><code class="language-text">计划没问题，请按这个计划执行。</code></pre></div></div>
+<div class="step"><span class="step-number">6</span><div>按 Claude Code 的提示查看并接受修改。完成后目录里应当至少有：<pre><code class="language-text">hello.py
+README.md</code></pre>
 <p><code>hello.py</code> 预期内容类似：</p>
-<pre><code class="language-python">   print(&quot;Hello, Laffey API!&quot;)</code></pre>
-<div class="step"><span class="step-number">7</span><div>退出 Claude Code 后运行：</div></div>
-<p>Windows PowerShell：</p>
-<pre><code class="language-powershell">   python hello.py</code></pre>
+<pre><code class="language-python">print(&quot;Hello, Laffey API!&quot;)</code></pre></div></div>
+<div class="step"><span class="step-number">7</span><div>退出 Claude Code 后运行：<p>Windows PowerShell：</p>
+<pre><code class="language-powershell">python hello.py</code></pre>
 <p>macOS 终端：</p>
-<pre><code class="language-bash">   python3 hello.py</code></pre>
+<pre><code class="language-bash">python3 hello.py</code></pre>
 <p>看到下面输出即表示成功：</p>
-<pre><code class="language-text">   Hello, Laffey API!</code></pre>
-<div class="step"><span class="step-number">8</span><div>常用命令：</div></div>
-<p>| 命令 | 用途 | |---|---| | <code>claude</code> | 正常启动 Claude Code | | <code>claude --version</code> | 查看版本，确认是否安装成功 | | <code>/login</code> | 在 Claude Code 内重新登录或切换账号 | | <code>npm install -g @anthropic-ai/claude-code</code> | 重新安装或升级 npm 版本的 Claude Code |</p>
-<h2 id="常见问题">常见问题</h2>
-<h3 id="CC-Switch-导入失败">CC Switch 导入失败</h3>
+<pre><code class="language-text">Hello, Laffey API!</code></pre></div></div>
+<div class="step"><span class="step-number">8</span><div>常用命令：<div class="table-wrap"><table><thead><tr><th>命令</th><th>用途</th></tr></thead><tbody><tr><td><code>claude</code></td><td>正常启动 Claude Code</td></tr><tr><td><code>claude --version</code></td><td>查看版本，确认是否安装成功</td></tr><tr><td><code>/login</code></td><td>在 Claude Code 内重新登录或切换账号</td></tr><tr><td><code>npm install -g @anthropic-ai/claude-code</code></td><td>重新安装或升级 npm 版本的 Claude Code</td></tr></tbody></table></div></div></div>
+<h2 id="section-25">常见问题</h2>
+<h3 id="cc-switch-1">CC Switch 导入失败</h3>
 <p>按顺序检查：</p>
 <div class="step"><span class="step-number">1</span><div>是否已经安装 CC Switch。</div></div>
 <div class="step"><span class="step-number">2</span><div>是否打开过一次 CC Switch。</div></div>
 <div class="step"><span class="step-number">3</span><div>浏览器是否拦截了 <code>ccswitch://</code> 链接。</div></div>
 <div class="step"><span class="step-number">4</span><div>Sub2API <strong>设置 → 站点设置</strong> 中是否隐藏了 CCS 导入按钮。</div></div>
-<div class="step"><span class="step-number">5</span><div>当前 API Key 是否已经创建成功。</div></div>
-<p>处理方式：</p>
+<div class="step"><span class="step-number">5</span><div>当前 API Key 是否已经创建成功。<p>处理方式：</p></div></div>
 <div class="table-wrap"><table><thead><tr><th>问题</th><th>处理</th></tr></thead><tbody><tr><td>点击没反应</td><td>重新安装 CC Switch，并打开一次</td></tr><tr><td>浏览器弹窗被拦截</td><td>允许打开外部应用</td></tr><tr><td>提示未安装</td><td>检查 <code>ccswitch://</code> 协议是否注册</td></tr><tr><td>导入了但不能用</td><td>在 CC Switch 中确认已切到对应供应商</td></tr></tbody></table></div>
-<h3 id="Codex-CLI-不能用">Codex CLI 不能用</h3>
+<h3 id="codex-cli-1">Codex CLI 不能用</h3>
 <p>按顺序检查：</p>
 <div class="step"><span class="step-number">1</span><div><code>codex --version</code> 是否能显示版本。</div></div>
 <div class="step"><span class="step-number">2</span><div><code>~/.codex/config.toml</code> 或 <code>%userprofile%\.codex\config.toml</code> 是否存在。</div></div>
 <div class="step"><span class="step-number">3</span><div><code>auth.json</code> 里是否是你的 Sub2API Key。</div></div>
 <div class="step"><span class="step-number">4</span><div><code>base_url</code> 是否是 <code>https://当前站点域名</code>，不要多写 <code>/v1</code>。</div></div>
 <div class="step"><span class="step-number">5</span><div>API Key 是否绑定 Codex / OpenAI 分组。</div></div>
-<h3 id="Claude-Code-不能用">Claude Code 不能用</h3>
+<h3 id="claude-code-1">Claude Code 不能用</h3>
 <p>按顺序检查：</p>
 <div class="step"><span class="step-number">1</span><div><code>claude --version</code> 是否能显示版本。</div></div>
 <div class="step"><span class="step-number">2</span><div><code>ANTHROPIC_BASE_URL</code> 是否是 <code>https://当前站点域名</code>。</div></div>
 <div class="step"><span class="step-number">3</span><div><code>ANTHROPIC_AUTH_TOKEN</code> 是否是 <code>sk-你的API密钥</code>。</div></div>
 <div class="step"><span class="step-number">4</span><div>API Key 是否绑定 Claude / Anthropic 分组。</div></div>
 <div class="step"><span class="step-number">5</span><div>如果在 Plan Mode 卡住，按 <code>Shift + Tab</code> 手动切换模式，再继续输入。</div></div>
-<h3 id="API-Key-泄露了怎么办">API Key 泄露了怎么办</h3>
+<h3 id="api-key-1">API Key 泄露了怎么办</h3>
 <div class="step"><span class="step-number">1</span><div>立刻登录 Sub2API。</div></div>
 <div class="step"><span class="step-number">2</span><div>进入 <strong>API 密钥</strong>。</div></div>
 <div class="step"><span class="step-number">3</span><div>禁用或删除泄露的 Key。</div></div>
 <div class="step"><span class="step-number">4</span><div>创建新的 Key。</div></div>
 <div class="step"><span class="step-number">5</span><div>更新 CC Switch、Codex CLI、Codex App、Claude Code 里的配置。</div></div>
-<h3 id="换服务商或换分组怎么做">换服务商或换分组怎么做</h3>
+<h3 id="section-26">换服务商或换分组怎么做</h3>
 <p>推荐方式：</p>
 <div class="step"><span class="step-number">1</span><div>在 Sub2API 创建新的 API Key。</div></div>
 <div class="step"><span class="step-number">2</span><div>点击 <strong>导入到 CCS</strong>。</div></div>
 <div class="step"><span class="step-number">3</span><div>在 CC Switch 里切换到新的供应商。</div></div>
-<div class="step"><span class="step-number">4</span><div>重新打开 Codex CLI 或 Claude Code。</div></div>
-<p>手动方式：</p>
-<div class="step"><span class="step-number">1</span><div>修改配置文件里的 API Key。</div></div>
-<div class="step"><span class="step-number">2</span><div>修改配置文件里的中转站地址。</div></div>
-<div class="step"><span class="step-number">3</span><div>关闭并重新打开客户端。</div></div>
+<div class="step"><span class="step-number">4</span><div>重新打开 Codex CLI 或 Claude Code。<p>手动方式：</p></div></div>
+<div class="step"><span class="step-number">5</span><div>修改配置文件里的 API Key。</div></div>
+<div class="step"><span class="step-number">6</span><div>修改配置文件里的中转站地址。</div></div>
+<div class="step"><span class="step-number">7</span><div>关闭并重新打开客户端。</div></div>
     </article></main>
   </div>
+  <script>
+    (function () {
+      function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text);
+        }
+
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.top = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          document.execCommand("copy");
+          return Promise.resolve();
+        } catch (error) {
+          return Promise.reject(error);
+        } finally {
+          document.body.removeChild(textarea);
+        }
+      }
+
+      document.querySelectorAll("pre").forEach(function (block) {
+        if (block.querySelector(".copy-code-button")) {
+          return;
+        }
+
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "copy-code-button";
+        button.textContent = "复制";
+        button.setAttribute("aria-label", "复制代码");
+
+        button.addEventListener("click", function () {
+          var code = block.querySelector("code");
+          var text = code ? code.innerText : block.innerText;
+
+          copyText(text).then(function () {
+            button.textContent = "已复制";
+            button.classList.add("is-copied");
+            window.setTimeout(function () {
+              button.textContent = "复制";
+              button.classList.remove("is-copied");
+            }, 1600);
+          }).catch(function () {
+            button.textContent = "复制失败";
+            window.setTimeout(function () {
+              button.textContent = "复制";
+            }, 1600);
+          });
+        });
+
+        block.appendChild(button);
+      });
+    }());
+  </script>
 </body>
 </html>
